@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
 	belongs_to :category
+	belongs_to :author
 
 	validates_presence_of :text, message: 'não pode ser deixado em branco'
     validates_presence_of :subject, message: 'não pode ser deixado em branco'
