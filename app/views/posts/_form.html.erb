@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :author_id %>
+    <%= form.select :author_id, Author.all.collect {|author| [author.nome, author.id]}, {include_blank: true} %>
+  </div>
+
+  <div class="field">
     <%= form.label :text %>
     <%= form.text_area :text %>
   </div>
