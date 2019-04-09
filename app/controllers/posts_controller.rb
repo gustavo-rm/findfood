@@ -7,6 +7,14 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def homepage
+    @posts = Post.recents
+    #Post.order('created_at desc')
+    #Post.where(id)
+    #Post.where(:subject => 'Assunto')
+    #Post.where('subject like ?', 'Assunto%')
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -40,6 +48,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    #byebug
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }

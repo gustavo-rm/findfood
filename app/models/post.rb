@@ -11,5 +11,7 @@ class Post < ApplicationRecord
     #validates_length_of :title, maximum: 11, message: 'deve ter até 11 caracteres'
 
     validates_uniqueness_of :title, message: 'deve ser único'
-    
+
+    scope :recents, -> {(where('created_at < ?', Time.now))}    
+    #scope :recents, -> {(where('created_at < ?', Time.now.beginning_of_day - 5.days))} 
 end
