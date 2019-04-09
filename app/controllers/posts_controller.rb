@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def homepage
-    @posts = Post.recents
+    @posts = Post.recents.order('created_at desc')
     #Post.order('created_at desc')
     #Post.where(id)
     #Post.where(:subject => 'Assunto')
