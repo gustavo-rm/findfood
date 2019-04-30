@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
   def homepage
     @posts = Post.recents.order('created_at desc')
+    @posts = @posts.where(category_id: params[:category_id]) unless params[:category_id].blank?
+    @posts = @posts.where('UPPER(text) LIKE ?', "%#{params[:search].upcase}%") unless params[:search].blank?
     #Post.order('created_at desc')
     #Post.where(id)
     #Post.where(:subject => 'Assunto')
