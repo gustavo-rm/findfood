@@ -1,0 +1,49 @@
+<%= form_with(model: dish, local: true) do |form| %>
+  <% if dish.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dish.errors.count, "error") %> prohibited this dish from being saved:</h2>
+
+      <ul>
+      <% dish.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <label>Restaurant</label>
+    <%= form.select :restaurant_id, Restaurant.all.collect {|restaurant| [restaurant.name, restaurant.id]}, :class => "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <label>Category</label>
+    <%= form.select :category_id, Category.all.collect {|category| [category.description, category.id]}, :class => "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, :class => "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <label>Ingredients</label><br>
+    <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all.order(:description), :id, :description, checked: dish.ingredients.map(&:id)) do |i| %>
+      <%= i.check_box %> <%= i.label %>
+    <% end %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :price %>
+    <%= form.text_field :price, :class => "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :preparationtime %>
+    <%= form.text_field :preparationtime, :class => "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-outline-info' %>
+  </div>
+<% end %>
