@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "FindFood",
+=======
+  "name": "blogao20191",
+>>>>>>> 27eb930ff04d8e85525b40e38638b161ab207de3
   "private": true,
   "dependencies": {}
 }

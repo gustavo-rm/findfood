@@ -15,3 +15,27 @@
  */
 
 @import "bootstrap";
+
+.bg-restaurant {
+	background-image: image-url('restaurant.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	opacity: 0.9;
+}
+
+.bg-text {
+	border: 1px solid #ccc !important; 
+	box-sizing: inherit; 
+	border-radius: 16px;
+	padding: 0.6em;
+	background-color: rgba(211, 211, 211, 0.8);
+}
+
+.panel a, .panel a:focus, .panel a:active, .panel a:visited {
+  color: #333 !important;
+}
+
+mark {
+  background: #FFFF77;
+}

@@ -4,4 +4,12 @@ module ApplicationHelper
 			link_to description, path, class:"nav-link"
 		end
 	end
+
+	def selected_title(title, word)
+    if ! word.blank?
+      title.gsub(word, "<b>#{word}</b>")
+    else
+      title
+    end
+  end
 end

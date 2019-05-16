@@ -23,7 +23,11 @@ default: &default
 
 development:
   <<: *default
+<<<<<<< HEAD
   database: FindFood_development
+=======
+  database: blogao20191_development
+>>>>>>> 27eb930ff04d8e85525b40e38638b161ab207de3
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +61,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+<<<<<<< HEAD
   database: FindFood_test
+=======
+  database: blogao20191_test
+>>>>>>> 27eb930ff04d8e85525b40e38638b161ab207de3
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +88,12 @@ test:
 #
 production:
   <<: *default
+<<<<<<< HEAD
   database: FindFood_production
   username: FindFood
   password: <%= ENV['FINDFOOD_DATABASE_PASSWORD'] %>
+=======
+  database: blogao20191_production
+  username: blogao20191
+  password: <%= ENV['BLOGAO20191_DATABASE_PASSWORD'] %>
+>>>>>>> 27eb930ff04d8e85525b40e38638b161ab207de3

@@ -2,13 +2,15 @@
 
 <h1>Dishes</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Preparationtime</th>
-      <th colspan="3"></th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Preparationtime</th>
+      <th scope="col">Ingredients</th>
+      <th scope="col">Category</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -18,9 +20,12 @@
         <td><%= dish.description %></td>
         <td><%= dish.price %></td>
         <td><%= dish.preparationtime %></td>
-        <td><%= link_to 'Show', dish %></td>
-        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= dish.ingredients.map(&:description).join(', ') %></td>
+        <td><%= dish.category.description %></td>
+
+        <td><%= link_to 'Show', dish, :class => "btn btn-outline-primary" %></td>
+        <td><%= link_to 'Edit', edit_dish_path(dish), :class => "btn btn-outline-secondary" %></td>
+        <td><%= link_to 'Destroy', dish, :class => "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Dish', new_dish_path %>
+<%= link_to 'New Dish', new_dish_path, class: 'btn btn-primary' %>

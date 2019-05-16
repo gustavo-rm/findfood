@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<<<<<<< HEAD
   <div class="field">
     <%= form.label :description %>
     <%= form.text_field :description %>
@@ -18,5 +19,14 @@
 
   <div class="actions">
     <%= form.submit %>
+=======
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-success' %>
+>>>>>>> 27eb930ff04d8e85525b40e38638b161ab207de3
   </div>
 <% end %>

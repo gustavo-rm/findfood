@@ -41,8 +41,13 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+<<<<<<< HEAD
 gem 'bootstrap', '~> 4.3.1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+=======
+gem 'bootstrap-sass', '~> 3.2.0' 
+gem 'autoprefixer-rails'
+>>>>>>> 27eb930ff04d8e85525b40e38638b161ab207de3
 gem 'jquery-rails'
 
 group :development do

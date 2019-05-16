@@ -4,19 +4,20 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.all.order("name")
   end
 
   def homepage
     @restaurants = Restaurant.all.order("name")
     @restaurants = @restaurants.joins("INNER JOIN dishes ON dishes.restaurant_id = restaurants.id AND dishes.category_id = ", params[:category_id]).distinct unless params[:category_id].blank?
-    @restaurants = @restaurants.joins("INNER JOIN dishes ON dishes.restaurant_id = restaurants.id AND UPPER(dishes.description) like ", "'%#{params[:search_term].to_s.upcase}%'").distinct unless params[:search_term].blank?
-    #search_meal(params[:search_term].to_s)
+    @dishes = Dish.all.where('UPPER(description) like ?', "%#{params[:search].to_s.upcase}%") unless params[:search].blank?
+    @restaurants = Restaurant.includes(:dishes).where('dishes.id' => @dishes.each(&:id)) unless params[:search].blank?
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @word = Restaurant.find(params[:word].to_s) unless params[:word].blank?
   end
 
   # GET /restaurants/new
