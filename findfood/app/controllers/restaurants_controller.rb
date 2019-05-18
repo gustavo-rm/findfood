@@ -12,17 +12,27 @@ class RestaurantsController < ApplicationController
     @restaurants = @restaurants.joins("INNER JOIN dishes ON dishes.restaurant_id = restaurants.id AND dishes.category_id = ", params[:category_id]).distinct unless params[:category_id].blank?
     @dishes = Dish.all.where('UPPER(description) like ?', "%#{params[:search].to_s.upcase}%") unless params[:search].blank?
     @restaurants = Restaurant.includes(:dishes).where('dishes.id' => @dishes.each(&:id)) unless params[:search].blank?
+    search_dish(params[:search].to_s)
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
-  def show
-    @word = Restaurant.find(params[:word].to_s) unless params[:word].blank?
+  def show_restaurant
+    @restaurants = Restaurant.find(params[:restaurant_id])
+    @dishes = Dish.where("restaurant_id = ?", params[:restaurant_id])
+    @search = $dish
+  end
+
+  def search_dish(term)
+    $dish = term
   end
 
   # GET /restaurants/new
   def new
     @restaurant = Restaurant.new
+  end
+
+  def show
   end
 
   # GET /restaurants/1/edit

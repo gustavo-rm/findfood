@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><%= @restaurants.name %></h1>
+      <p> <strong>Endereco:</strong>
+        <%= @restaurants.address %></p>
+      <p><strong>Telefone:</strong>
+        <%= @restaurants.phone %></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <% @dishes.all.order(:description).each do |d| %>
+      <div class="col-md-4">
+        <h2><%=  highlight(d.description,@search) %></h2>
+        <p>Categoria: <%= d.category.description %></p>
+        <p><strong>Ingredientes:</strong></p>
+        <% d.ingredients.each do |i| %>
+            <p class="nav nav-pills" style="font-size: 20px"><%= i.description %></p>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+    <hr>
+<%= link_to 'Voltar', '/', class: 'btn btn-primary' %>
+  </div> <!-- /container -->
+
+</main>

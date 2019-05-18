@@ -1,37 +1,15 @@
 <p id="notice"><%= notice %></p>
-<div class="row">
-  <div class="panel panel-default">
-    <div class = "panel-heading">
-      <h2>
-        <strong><%= @restaurant.name %></strong>
-      </h2>
-    </div>
-    <div class="panel-body">
-    	<h3>
-        <strong>Endereco:</strong>
-        <%= @restaurant.address %>
-      </h3>
-      <h3>
-        <strong>Telefone:</strong>
-        <%= @restaurant.phone %>
-      </h3>
-      
-      <h3>
-        <strong>Pratos:</strong>
-      </h3>
-      <ol>
-        <% @restaurant.dishes.order(:description).each do |d| %>
-            <li style="font-size: 20px"><%= raw selected_title(d.description, @word.to_s) %></li>
-            <ul>
-              <li style="font-size: 20px">Categoria: <%= d.category.description %></li>
-              <li style="font-size: 20px"><strong>Ingredientes:</strong></li>
-              <% d.ingredients.each do |i| %>
-                  <p class="nav nav-pills" style="font-size: 20px"><%= i.description %></p>
-              <% end %>
-            </ul>
-        <% end %>
-      </ol>
-    </div>
-  </div>
-  <%= link_to 'Voltar', '/' %>
+
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+<div class="card-header bg-transparent border-dark"><h2><%= @restaurant.name %></h2></div>
+<div class="card-body text-dark">
+  <p class="card-text">
+  <h6>Address: <%= @restaurant.address %></h6>
+  <h6>Phone: <%= @restaurant.phone %></h6>
+  </p>
+</div>
+<div class="card-footer bg-transparent border-dark align-self-center">
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-outline-success" %>
+  <%= link_to 'Back', restaurants_path, class: "btn btn-outline-secondary" %>
+</div>
 </div>

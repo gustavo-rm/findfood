@@ -7,7 +7,7 @@
       <p class="lead">Endereço: <%= restaurant.address %></p>
       <p>Telefone: <%= restaurant.phone %></p>
       <p>
-        <%= link_to "Informações", "restaurants/#{restaurant.id}", class:"btn btn-primary my-2"%>
+        <%= link_to "Ver Informações", show_restaurant_restaurants_path(restaurant_id: restaurant.id), class:"btn btn-primary my-2"%>
       </p>
     </div>
   </section>  

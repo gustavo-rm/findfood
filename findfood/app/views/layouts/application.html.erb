@@ -9,11 +9,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column h-100">
 
     <%= render '/layouts/menu' %>
-    <div class="container-fluid" style="margin-bottom: 1em;">
+    <div class="container-fluid flex-shrink-0" style="margin-bottom: 1em;">
       <%= yield %>
     </div>
+
+    <%= render '/layouts/footer' %>
   </body>
 </html>
